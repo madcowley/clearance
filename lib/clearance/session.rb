@@ -32,7 +32,8 @@ module Clearance
                                        REMEMBER_TOKEN_COOKIE,
                                        :value => current_user.remember_token,
                                        :expires => Clearance.configuration.cookie_expiration.call,
-                                       :path => "/")
+                                       :path => "/",
+                                       :domain => ".#{Rack::Request.new(@env).host}")
       end
     end
 
